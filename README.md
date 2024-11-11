@@ -123,6 +123,65 @@ To run the C-Shopping React Native app locally, follow these steps:
 
 6. Connect your mobile device or emulator to run the app.
 
+To make a preview build and install on a mobile device, , follow these steps:
+
+Install the latest EAS CLI
+
+```
+npm install -g eas-cli
+```
+
+Log in to your Expo account
+
+```
+eas login
+```
+
+Configure your project
+
+```
+eas build:configure
+```
+
+or
+
+```
+eas update:configure
+```
+
+set build environment variable for each build profile in eas.json:
+
+```
+"preview": {
+"env": {
+   "EXPO_PUBLIC_BASE_URL": "https://c-shopping-three.vercel.app"
+},
+"distribution": "internal"
+},
+"production": {
+"env": {
+   "EXPO_PUBLIC_BASE_URL": "https://c-shopping-three.vercel.app"
+},
+"autoIncrement": true
+}
+```
+
+Now you can run your build with the following command:
+
+```
+eas build --profile=preview --platform=android
+```
+
+Install the prebuild on a device
+Go to `https://expo.dev/accounts/<your Expo account>/projects/c-shopping-rn/builds`, and click Android internal distribution build. In Build artifact, click Install:
+
+Scan this code with a device. Open the Camera app and point it at this code. Then tap the notification that appears
+
+or
+
+Send a link to a device. Send and open the URL below to install it on a device.
+`https://expo.dev/accounts/<your Expo account>/projects/c-shopping-rn/builds/<Build ID>`
+
 ## Contact Me
 
 I am a technology explorer, a eager learner, and a problem solver.
